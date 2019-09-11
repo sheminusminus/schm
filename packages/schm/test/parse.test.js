@@ -169,7 +169,7 @@ describe("nested schema", () => {
     expect(fn).toHaveBeenCalledWith({ bar: "qux" });
   });
 
-  test("handles parse when param is schema and value is not given", () => {
+  test("handles parse when param is schema and value is not given, non-optional", () => {
     const schm1 = schema({
       bar: String
     });
@@ -178,9 +178,51 @@ describe("nested schema", () => {
       baz: String
     });
     const values = {
-      foo: {},
       baz: "buzz"
     };
     expect(parse(values, schm2)).toEqual(values);
+  });
+
+  test("handles parse when param is schema and value is not given, optional with defaultValue", () => {
+    const schm1 = schema({
+      bar: String
+    });
+    const schm2 = schema({
+      foo: {
+        defaultValue: {},
+        optional: true,
+        type: schm1
+      },
+      baz: String
+    });
+    const values = {
+      baz: "buzz"
+    };
+    const expected = {
+      foo: {},
+      baz: "buzz"
+    };
+    expect(parse(values, schm2)).toEqual(expected);
+  });
+
+  test("handles parse when param is schema and value is not given, optional without defaultValue", () => {
+    const schm1 = schema({
+      bar: String
+    });
+    const schm2 = schema({
+      foo: {
+        optional: true,
+        type: schm1
+      },
+      baz: String
+    });
+    const values = {
+      baz: "buzz"
+    };
+    const expected = {
+      foo: {},
+      baz: "buzz"
+    };
+    expect(parse(values, schm2)).toEqual(expected);
   });
 });
