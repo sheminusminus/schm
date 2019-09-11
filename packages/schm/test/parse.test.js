@@ -168,4 +168,19 @@ describe("nested schema", () => {
     expect(fn).toHaveBeenCalledWith({ bar: "baz" });
     expect(fn).toHaveBeenCalledWith({ bar: "qux" });
   });
+
+  test("handles parse when param is schema and value is not given", () => {
+    const schm1 = schema({
+      bar: String
+    });
+    const schm2 = schema({
+      foo: schm1,
+      baz: String
+    });
+    const values = {
+      foo: {},
+      baz: "buzz"
+    };
+    expect(parse(values, schm2)).toEqual(values);
+  });
 });

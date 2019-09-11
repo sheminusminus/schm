@@ -39,8 +39,20 @@ const mapValues: MapValuesFunction = (
     }
 
     if (isSchema(options.type)) {
+      let val = value;
+      if (!value) {
+        if (!options.optional) {
+          return mergeParam(undefined);
+        }
+
+        if (options.defaultValue) {
+          val = options.defaultValue;
+        } else {
+          val = {};
+        }
+      }
       return mergeParam(
-        mapValues(value, options.type.params, transformValueFn, [paramPath])
+        mapValues(val, options.type.params, transformValueFn, [paramPath])
       );
     }
 
