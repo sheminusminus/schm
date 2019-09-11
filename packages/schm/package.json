@@ -1,14 +1,14 @@
 {
-  "name": "schm",
-  "version": "0.4.1",
-  "description": "Composable, parseable and validatable schemas for JavaScript and Node.js",
+  "name": "@sheminusminus/schm",
+  "version": "0.4.2",
+  "description": "A fork of schm: Composable, parseable and validatable schemas for JavaScript and Node.js",
   "license": "MIT",
-  "repository": "https://github.com/diegohaz/schm/tree/master/packages/schm",
+  "repository": "https://github.com/sheminusminus/schm/tree/master/packages/schm",
   "main": "dist/index.js",
   "author": {
-    "name": "Diego Haz",
-    "email": "hazdiego@gmail.com",
-    "url": "https://github.com/diegohaz"
+    "name": "Emily Kolar",
+    "email": "emkolar@gmail.com",
+    "url": "https://github.com/sheminusminus"
   },
   "engines": {
     "node": ">=6"
