@@ -53,5 +53,6 @@
     "opn-cli": "^3.1.0",
     "rimraf": "^2.6.1",
     "validate.js": "^0.12.0"
-  }
+  },
+  "gitHead": "ac17e39c4fc437a80f2155d6d137ffdeefe7b6e0"
 }
