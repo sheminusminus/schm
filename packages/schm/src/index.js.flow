@@ -7,19 +7,19 @@ export type Parser = (
   paramPath?: string,
   options?: Object,
   values?: Object,
-  schema?: Schema,
-) => any
+  schema?: Schema
+) => any;
 
 export type ValidatorResponse = {
   valid: any,
   message?: string,
-  isSchema?: boolean,
-}
+  isSchema?: boolean
+};
 
 export type ParsedValidatorOption = {
   optionValue: any,
-  message?: string,
-}
+  message?: string
+};
 
 export type Validator = (
   value: any,
@@ -27,16 +27,16 @@ export type Validator = (
   paramPath?: string,
   options?: Object,
   values?: Object,
-  schema?: Schema,
-) => ValidatorResponse
+  schema?: Schema
+) => ValidatorResponse;
 
 /** */
 export type ValidationError = {
   param: string,
   value?: any,
   validator: string,
-  message?: string,
-}
+  message?: string
+};
 
 /** */
 export type Schema = {
@@ -45,8 +45,8 @@ export type Schema = {
   validators: { [string]: Validator },
   parse: (values: Object) => Object,
   validate: (values: Object) => Promise<ValidationError[]>,
-  merge: (...schemas: Object[]) => Schema,
-}
+  merge: (...schemas: Object[]) => Schema
+};
 
 /** */
-export type SchemaGroup = (previous: Schema) => Schema
+export type SchemaGroup = (previous: Schema) => Schema;
