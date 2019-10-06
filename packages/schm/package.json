@@ -1,6 +1,6 @@
 {
   "name": "@sheminusminus/schm",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "A fork of schm: Composable, parseable and validatable schemas for JavaScript and Node.js",
   "license": "MIT",
   "repository": "https://github.com/sheminusminus/schm/tree/master/packages/schm",
