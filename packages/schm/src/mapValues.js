@@ -32,9 +32,30 @@ const mapValues: MapValuesFunction = (
 
     if (isArray(options.type)) {
       const [opt] = options.type;
+
+      if (isSchema(opt)) {
+        let val = value;
+        if (!value) {
+          if (!options.optional) {
+            return mergeParam(undefined);
+          }
+
+          if (options.defaultValue) {
+            val = options.defaultValue;
+          } else {
+            val = {};
+          }
+        }
+
+        return mergeParam(
+          mapValues(val, opt.params, transformValueFn, [paramPath])
+        );
+      }
+
       const finalValue = toArray(value).map((val, i) =>
         transformValueFn(val, opt, paramName, [paramPath, i].join("."))
       );
+
       return mergeParam(finalValue);
     }
 
